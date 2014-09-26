@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS directives for social sharing buttons - Facebook Like, Google+, Twitter and Pinterest</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div ng-controller="myController" class="jumbotron text-center">
+        <div class="container">
+            <div class="col-xs-3">
+                <div fb-like></div>
+            </div>
+            <div class="col-xs-3">
+                <div tweet="myModel.Name"></div>
+            </div>
+            <div class="col-xs-3">
+                <div google-plus></div>
+            </div>
+            <div class="col-xs-3">
+                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
+            </div>
+        </div>
+    </div>
+    <div class="credits text-center">
+        <p>
+            <a href="http://www.jasonwatmore.com/post/2014/08/01/AngularJS-directives-for-social-sharing-buttons-Facebook-Like-GooglePlus-Twitter-and-Pinterest.aspx">AngularJS directives for social sharing buttons</a>
+        </p>
+        <p>
+            <a href="http://www.jasonwatmore.com">www.jasonwatmore.com</a>
+        </p>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+    <script src="../angulike.js"></script>
+    <script src="demo.js"></script>
+</body>
+</html>
