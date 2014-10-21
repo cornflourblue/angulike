@@ -29,6 +29,12 @@ Create an empty div with the *fb-like* attribute.
 <div fb-like></div>
 ```
 
+Optionally you can set the URL for the facebook like button to link to like this:
+
+```html
+<div fb-like="myModel.FbLikeUrl"></div>
+```
+
 ####Google+
 
 Create an empty div with the *google-plus* attribute.
