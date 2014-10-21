@@ -16,5 +16,8 @@ angular.module('myApp')
               Name: "Jason Watmore's Blog", // text for tweet and pinIt buttons
               ImageUrl: 'http://www.jasonwatmore.com/pics/jason-watmore.jpg' // image url for pinIt button
           };
+
+          // Use this if you want to link a different URL to the facebook like button, also update demo.html
+          // $scope.myModel.FbLikeUrl = 'http://www.jasonwatmore.com';
       }
   ]);
