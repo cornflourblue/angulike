@@ -28,11 +28,19 @@
                           renderLikeButton();
                       }
 
+					  var watchAdded = false;
                       function renderLikeButton() {
-                          if (!!attrs.fbLike && !scope.fbLike) {
+                          if (!!attrs.fbLike && !scope.fbLike && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-                              scope.$watch('fbLike', function () {
-                                  renderLikeButton();
+							  var watchAdded = true;
+                              var unbindWatch = scope.$watch('fbLike', function (newValue, oldValue) {
+							      if (newValue) {
+								      renderLikeButton();
+									  
+									  // only need to run once
+									  unbindWatch();
+								  }
+                                  
                               });
                               return;
                           } else {
@@ -85,11 +93,18 @@
                           renderTweetButton();
                       }
 
+					  var watchAdded = false;
                       function renderTweetButton() {
-                          if (!scope.tweet) {
+                          if (!scope.tweet && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-                              scope.$watch('tweet', function () {
-                                  renderTweetButton();
+							  watchAdded = true;
+                              var unbindWatch = scope.$watch('tweet', function (newValue, oldValue) {
+							      if (newValue) {
+                                      renderTweetButton();
+								  
+								      // only need to run once
+								      unbindWatch();
+								  }
                               });
                               return;
                           } else {
@@ -133,11 +148,18 @@
                           renderPinItButton();
                       }
 
+					  var watchAdded = false;
                       function renderPinItButton() {
-                          if (!scope.pinIt) {
+                          if (!scope.pinIt && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-                              scope.$watch('pinIt', function () {
-                                  renderPinItButton();
+							  watchAdded = true;
+                              var unbindWatch = scope.$watch('pinIt', function (newValue, oldValue) {
+							      if (newValue) {
+								      renderPinItButton();
+									  
+									  // only need to run once
+									  unbindWatch();
+								  }
                               });
                               return;
                           } else {
