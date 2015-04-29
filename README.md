@@ -29,10 +29,10 @@ Create an empty div with the *fb-like* attribute.
 <div fb-like></div>
 ```
 
-Optionally you can set the URL for the facebook like button to link to like this:
+To use a custom URL for the facebook like button:
 
 ```html
-<div fb-like="myModel.FbLikeUrl"></div>
+<div fb-like="myModel.Url"></div>
 ```
 
 ####Google+
@@ -43,12 +43,24 @@ Create an empty div with the *google-plus* attribute.
 <div google-plus></div>
 ```
 
+To use a custom URL for the google plus button:
+
+```html
+<div google-plus="myModel.Url"></div>
+```
+
 ####Twitter
 
 Create an empty div with the *tweet* attribute, the value of the attribute contains the name of the model object for the tweet text.
 
 ```html
 <div tweet="myModel.Name"></div>
+```
+
+To use a custom URL for the tweet button:
+
+```html
+<div tweet="myModel.Name" tweet-url="myModel.Url"></div>
 ```
 
 ####Pinterest
@@ -60,3 +72,8 @@ description and the pin-it-image attribute contains the name of the model object
 <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
 ```
 
+To use a custom URL for the pinterest button:
+
+```html
+<div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl" pin-it-url="myModel.Url"></div>
+```
