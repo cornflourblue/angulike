@@ -1,7 +1,7 @@
 ﻿/**
  * AngularJS directives for social sharing buttons - Facebook Like, Google+, Twitter and Pinterest 
  * @author Jason Watmore <jason@pointblankdevelopment.com.au> (http://jasonwatmore.com)
- * @version 1.0.0
+ * @version 1.2.0
  */
 (function () {
     angular.module('angulike', [])
@@ -57,6 +57,9 @@
           '$window', function ($window) {
               return {
                   restrict: 'A',
+                  scope: {
+                      googlePlus: '=?'
+                  },
                   link: function (scope, element, attrs) {
                       if (!$window.gapi) {
                           // Load Google SDK if not already loaded
@@ -67,9 +70,25 @@
                           renderPlusButton();
                       }
 
+                      var watchAdded = false;
                       function renderPlusButton() {
-                          element.html('<div class="g-plusone" data-size="medium"></div>');
-                          $window.gapi.plusone.go(element.parent()[0]);
+                          if (!!attrs.googlePlus && !scope.googlePlus && !watchAdded) {
+                              // wait for data if it hasn't loaded yet
+                              var watchAdded = true;
+                              var unbindWatch = scope.$watch('googlePlus', function (newValue, oldValue) {
+                                  if (newValue) {
+                                      renderPlusButton();
+
+                                      // only need to run once
+                                      unbindWatch();
+                                  }
+
+                              });
+                              return;
+                          } else {
+                              element.html('<div class="g-plusone"' + (!!scope.googlePlus ? ' data-href="' + scope.googlePlus + '"' : '') + ' data-size="medium"></div>');
+                              $window.gapi.plusone.go(element.parent()[0]);
+                          }
                       }
                   }
               };
@@ -77,11 +96,13 @@
       ])
 
       .directive('tweet', [
-          '$window', function ($window) {
+          '$window', '$location',
+          function ($window, $location) {
               return {
                   restrict: 'A',
                   scope: {
-                      tweet: '='
+                      tweet: '=',
+                      tweetUrl: '='
                   },
                   link: function (scope, element, attrs) {
                       if (!$window.twttr) {
@@ -108,7 +129,7 @@
                               });
                               return;
                           } else {
-                              element.html('<a href="https://twitter.com/share" class="twitter-share-button" data-text="' + scope.tweet + '">Tweet</a>');
+                              element.html('<a href="https://twitter.com/share" class="twitter-share-button" data-text="' + scope.tweet + '" data-url="' + (scope.tweetUrl || $location.absUrl()) + '">Tweet</a>');
                               $window.twttr.widgets.load(element.parent()[0]);
                           }
                       }
@@ -124,7 +145,8 @@
                   restrict: 'A',
                   scope: {
                       pinIt: '=',
-                      pinItImage: '='
+                      pinItImage: '=',
+                      pinItUrl: '='
                   },
                   link: function (scope, element, attrs) {
                       if (!$window.parsePins) {
@@ -163,8 +185,7 @@
                               });
                               return;
                           } else {
-                              scope.pinItUrl = $location.absUrl();
-                              element.html('<a href="//www.pinterest.com/pin/create/button/?url=' + scope.pinItUrl + '&media=' + scope.pinItImage + '&description=' + scope.pinIt + '" data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>');
+                              element.html('<a href="//www.pinterest.com/pin/create/button/?url=' + (scope.pinItUrl || $location.absUrl()) + '&media=' + scope.pinItImage + '&description=' + scope.pinIt + '" data-pin-do="buttonPin" data-pin-config="beside"></a>');
                               $window.parsePins(element.parent()[0]);
                           }
                       }

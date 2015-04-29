@@ -13,11 +13,9 @@ angular.module('myApp')
   .controller('myController', [
       '$scope', function ($scope) {
           $scope.myModel = {
-              Name: "Jason Watmore's Blog", // text for tweet and pinIt buttons
-              ImageUrl: 'http://www.jasonwatmore.com/pics/jason-watmore.jpg' // image url for pinIt button
+              Url: 'http://jasonwatmore.com/post/2014/08/01/AngularJS-directives-for-social-sharing-buttons-Facebook-Like-GooglePlus-Twitter-and-Pinterest.aspx',
+              Name: "AngularJS directives for social sharing buttons - Facebook, Google+, Twitter and Pinterest | Jason Watmore's Blog", 
+              ImageUrl: 'http://www.jasonwatmore.com/pics/jason.jpg'
           };
-
-          // Use this if you want to link a different URL to the facebook like button, also update demo.html
-          // $scope.myModel.FbLikeUrl = 'http://www.jasonwatmore.com';
       }
   ]);
