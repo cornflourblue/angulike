@@ -28,18 +28,18 @@
                           renderLikeButton();
                       }
 
-					  var watchAdded = false;
+                      var watchAdded = false;
                       function renderLikeButton() {
                           if (!!attrs.fbLike && !scope.fbLike && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-							  var watchAdded = true;
+                              watchAdded = true;
                               var unbindWatch = scope.$watch('fbLike', function (newValue, oldValue) {
-							      if (newValue) {
-								      renderLikeButton();
-									  
-									  // only need to run once
-									  unbindWatch();
-								  }
+                                  if (newValue) {
+                                      renderLikeButton();
+                                      
+                                      // only need to run once
+                                      unbindWatch();
+                                  }
                                   
                               });
                               return;
@@ -74,7 +74,7 @@
                       function renderPlusButton() {
                           if (!!attrs.googlePlus && !scope.googlePlus && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-                              var watchAdded = true;
+                              watchAdded = true;
                               var unbindWatch = scope.$watch('googlePlus', function (newValue, oldValue) {
                                   if (newValue) {
                                       renderPlusButton();
@@ -114,18 +114,18 @@
                           renderTweetButton();
                       }
 
-					  var watchAdded = false;
+                      var watchAdded = false;
                       function renderTweetButton() {
                           if (!scope.tweet && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-							  watchAdded = true;
+                              watchAdded = true;
                               var unbindWatch = scope.$watch('tweet', function (newValue, oldValue) {
-							      if (newValue) {
+                                  if (newValue) {
                                       renderTweetButton();
-								  
-								      // only need to run once
-								      unbindWatch();
-								  }
+                                  
+                                      // only need to run once
+                                      unbindWatch();
+                                  }
                               });
                               return;
                           } else {
@@ -170,18 +170,18 @@
                           renderPinItButton();
                       }
 
-					  var watchAdded = false;
+                      var watchAdded = false;
                       function renderPinItButton() {
                           if (!scope.pinIt && !watchAdded) {
                               // wait for data if it hasn't loaded yet
-							  watchAdded = true;
+                              watchAdded = true;
                               var unbindWatch = scope.$watch('pinIt', function (newValue, oldValue) {
-							      if (newValue) {
-								      renderPinItButton();
-									  
-									  // only need to run once
-									  unbindWatch();
-								  }
+                                  if (newValue) {
+                                      renderPinItButton();
+                                      
+                                      // only need to run once
+                                      unbindWatch();
+                                  }
                               });
                               return;
                           } else {
