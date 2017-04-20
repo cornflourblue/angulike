@@ -3,11 +3,11 @@ angulike
 
 AngularJS directives for social sharing buttons - Facebook Like, Google+, Twitter and Pinterest 
 
-###Demo
+### Demo
 
 To see a demo and further details go to http://jasonwatmore.com/post/2014/08/01/AngularJS-directives-for-social-sharing-buttons-Facebook-Like-GooglePlus-Twitter-and-Pinterest.aspx
 
-###Installation
+### Installation
 
 Install using bower: `bower install angulike`
 
@@ -19,9 +19,9 @@ Add the 'angulike' directive as a dependency of your AngularJS application:
 angular.module('myApp', ['angulike']);
 ```
 
-###Usage
+### Usage
 
-####Facebook Like
+#### Facebook Like
 
 Create an empty div with the *fb-like* attribute.
 
@@ -35,7 +35,7 @@ To use a custom URL for the facebook like button:
 <div fb-like="myModel.Url"></div>
 ```
 
-####Google+
+#### Google+
 
 Create an empty div with the *google-plus* attribute.
 
@@ -49,7 +49,7 @@ To use a custom URL for the google plus button:
 <div google-plus="myModel.Url"></div>
 ```
 
-####Twitter
+#### Twitter
 
 Create an empty div with the *tweet* attribute, the value of the attribute contains the name of the model object for the tweet text.
 
@@ -63,7 +63,7 @@ To use a custom URL for the tweet button:
 <div tweet="myModel.Name" tweet-url="myModel.Url"></div>
 ```
 
-####Pinterest
+#### Pinterest
 
 Create an empty div with the *pin-it* and *pin-it-image* attributes, the pin-it attribute contains the name of the model object for the 
 description and the pin-it-image attribute contains the name of the model object for the image url:
